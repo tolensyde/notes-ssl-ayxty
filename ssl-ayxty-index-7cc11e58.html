@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常中的活力 · 爱游戏体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background: #f3f4f6;
+            color: #1e293b;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1120 0%, #1a2332 100%);
+            padding: 4.5rem 2rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: #f3f4f6;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #f0f3fa;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            color: #b0c4de;
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* 正文区 */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 4rem;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .content h2 {
+            font-size: 1.7rem;
+            font-weight: 500;
+            margin-top: 2.2rem;
+            margin-bottom: 0.6rem;
+            border-left: 4px solid #2563eb;
+            padding-left: 1rem;
+            color: #0f172a;
+        }
+
+        .content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .content p {
+            margin-bottom: 1.4rem;
+            font-size: 1rem;
+            color: #2d3a4f;
+        }
+
+        /* 强调色用于链接 */
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #1e4bb3;
+            border-bottom-color: #2563eb;
+        }
+
+        /* 引用提示块 */
+        .insight {
+            background: #f0f4fe;
+            border-left: 4px solid #2563eb;
+            padding: 1.2rem 1.8rem;
+            margin: 2rem 0 1.8rem;
+            border-radius: 0 12px 12px 0;
+            font-style: normal;
+            color: #1e293b;
+        }
+
+        .insight strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .insight .label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 场景卡片（无边框，干净） */
+        .scene-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.8rem 0 1.2rem;
+        }
+
+        .scene-item {
+            flex: 1 1 180px;
+            background: #f8fafc;
+            padding: 1.2rem 1rem;
+            border-radius: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .scene-item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0f172a;
+            margin-bottom: 0.4rem;
+        }
+
+        .scene-item p {
+            font-size: 0.92rem;
+            color: #475569;
+            margin-bottom: 0;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 2.2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e9edf2;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            color: #1e293b;
+            padding: 0.3rem 0;
+            outline: none;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-mini summary::before {
+            content: '▸';
+            margin-right: 0.6rem;
+            color: #2563eb;
+            transition: transform 0.2s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini details p {
+            margin: 0.5rem 0 0.8rem 1.6rem;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        /* 访问句 */
+        .visit-line {
+            margin-top: 2.8rem;
+            padding: 1.2rem 1.8rem;
+            background: #f1f5f9;
+            border-radius: 14px;
+            text-align: center;
+            font-size: 1.05rem;
+            color: #1e293b;
+        }
+
+        .visit-line a {
+            font-weight: 600;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3rem 1.2rem 2.5rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .content {
+                padding: 1.8rem 1.2rem 3rem;
+            }
+            .content h2 {
+                font-size: 1.35rem;
+            }
+            .scene-grid {
+                flex-direction: column;
+            }
+            .scene-item {
+                flex: 1 1 auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .content {
+                border-radius: 0 0 20px 20px;
+            }
+        }
+
+        /* 小装饰 */
+        .dot-divider {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: #94a3b8;
+            border-radius: 50%;
+            margin: 0 0.6rem;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>场上场下，自然生长</h1>
+        <p class="sub">
+            有些节奏不必刻意寻找 —— 一次传球、一段夜跑、一场专注的对话，<br>
+            活力就藏在日常的缝隙里。
+        </p>
+    </header>
+
+    <!-- 正文区 -->
+    <main class="content">
+
+        <!-- 文章标题风格：导语 -->
+        <h2>运动，不止在体育馆</h2>
+        <p>
+            很长一段时间，我把「运动」等同于去健身房打卡、在操场跑足五公里，或是约上朋友打一场必须计分的篮球。后来发现，真正的体力活动更像是呼吸——不需要隆重的准备，也不必非得出汗才算数。周末骑车去买菜，午休时在楼梯间上下几趟，甚至站着打电话时左右换重心，都是一种微小的激活。
+        </p>
+        <p>
+            这个认知，是在断断续续接触不同的运动方式后慢慢形成的。有人喜欢周末约一场球，有人偏爱独自游泳，也有人只是每天散步半小时。形式不重要，重要的是身体记住了那种舒畅的感觉。
+        </p>
+
+        <!-- 引用提示块 -->
+        <div class="insight">
+            <span class="label">· 一种观察</span>
+            <strong>持续比强度重要。</strong> 每天十分钟的拉伸，比每周一次力竭训练更容易融入生活。真正让运动成为习惯的，往往不是意志力，而是那种「做起来不费劲」的轻松感。
+        </div>
+
+        <!-- 多段正文 + 自然嵌入链接 -->
+        <h2>从社区球场到数字陪伴</h2>
+        <p>
+            几年前，家附近翻新了一处社区篮球场，地面重新铺了防滑层，还装上了 LED 灯。夏天的傍晚，总有三五成群的人在那里投篮，不分年龄，也没有固定的规则，谁捡到球谁就投。那段时间我几乎每天都去，虽然技术很一般，但那种随意接球、出手的节奏，让人忘记时间。后来因为工作变动搬到另一个城市，球场不再方便，却意外发现，一些线上的社区同样能提供类似的归属感。
+        </p>
+        <p>
+            比如我常逛的 <a href="https://ssl-ayxty.com">爱游戏体育</a>，上面有很多普通人的运动记录和讨论——有人分享晨跑路线，有人问新手护具怎么选，也有人只是发一张夕阳下的球场照片。气氛很轻，没有谁在炫耀数据，更像是一群人在互相提醒：「动一动，感觉会好一些。」
+        </p>
+
+        <!-- 特点/场景卡片式 -->
+        <h2>几个轻松启动的场景</h2>
+        <p>如果不知道从哪开始，可以试试下面这些零门槛的切入点：</p>
+        <div class="scene-grid">
+            <div class="scene-item">
+                <h3>☕ 晨间十分钟</h3>
+                <p>起床后不急着坐下，站在窗边做几组扩胸、转体，再喝一杯温水。身体醒得比咖啡快。</p>
+            </div>
+            <div class="scene-item">
+                <h3>🚶 通勤多走一段</h3>
+                <p>坐地铁提前一站下车，或者把车停在离入口远一点的位置。每天多走几百步，积少成多。</p>
+            </div>
+            <div class="scene-item">
+                <h3>📱 屏幕间隙</h3>
+                <p>设置一个 45 分钟提醒，站起来伸懒腰、踮脚尖，或者原地踏步两分钟。眼睛和腰椎都会感谢你。</p>
+            </div>
+        </div>
+
+        <!-- 另一段正文 -->
+        <h2>不必成为运动员</h2>
+        <p>
+            很多人对运动有距离感，是因为总觉得「不够专业」——跑得不够快、投得不够准、动作不够标准。但运动最原初的意义，其实就是让身体动起来，顺便让脑袋放空。我在 <a href="https://ssl-ayxty.com">爱游戏体育</a> 上看过一个帖子，有人问「每天散步半小时算不算运动」，底下几乎所有人都回答「算」。那个帖子很普通，但莫名让人安心。
+        </p>
+        <p>
+            不需要报班、不需要买昂贵的装备、不需要给自己定一个必须完成的目标。今天天气好，出门走一圈；今天累了，就做几个俯卧撑然后休息。这种没有负担的节奏，反而更容易延续下去。
+        </p>
+
+        <!-- FAQ 摘要（轻量） -->
+        <div class="faq-mini">
+            <details>
+                <summary>总是坚持不下来怎么办？</summary>
+                <p>试着把目标调低到「不会失败」的程度。比如每天只做一个俯卧撑，或者只散步五分钟。完成时的正反馈比强度更重要。</p>
+            </details>
+            <details>
+                <summary>运动之后反而更累，正常吗？</summary>
+                <p>如果强度超出当前体能，短期疲劳是正常的。但长期疲劳可能意味着恢复不足或运动过量。建议降低强度，并保证睡眠和营养。</p>
+            </details>
+            <details>
+                <summary>一个人运动很无聊，怎么解决？</summary>
+                <p>可以一边听播客或音乐，也可以加入线上社群看看别人的日常。偶尔和朋友约一次线上同步运动，也会有陪伴感。</p>
+            </details>
+        </div>
+
+        <!-- 访问句 -->
+        <div class="visit-line">
+            如果你想看看那些普通人的运动日常，或是找一点轻松的灵感，
+            <a href="https://ssl-ayxty.com">爱游戏体育</a> 上总有一些简单真实的分享。
+        </div>
+
+    </main>
+
+</body>
+</html>
